@@ -265,13 +265,19 @@
                 
 
 <div class="list-group">
-  <p class="h4">共计 2 篇文章</p>
+  <p class="h4">共计 3 篇文章</p>
   <hr>
   
   
     
       
       <p class="h5">2023</p>
+    
+    <a href="/2023/09/12/Hexo/Fluid/Fluid-3-%E9%A1%B5%E9%9D%A2%E7%84%A6%E7%82%B9%E7%9B%91%E6%8E%A7%E6%96%87%E5%AD%97/" class="list-group-item list-group-item-action">
+      <time>09-12</time>
+      <div class="list-group-item-title">Fluid-3-页面焦点监控文字</div>
+    </a>
+  
     
     <a href="/2023/09/12/Hexo/Fluid/Fluid-1-%E4%B8%BB%E9%A2%98%E5%AE%89%E8%A3%85/" class="list-group-item list-group-item-action">
       <time>09-12</time>
@@ -423,6 +429,16 @@
   
 <script src="/custom/custom.js"></script>
 
+
+
+<!-- 页面焦点控制文字 -->
+
+  <script type="text/javascript">
+    /*窗口监视*/
+    var originalTitle = document.title;
+    window.onblur = function(){document.title = "等你回来~"};
+    window.onfocus = function(){document.title = originalTitle};
+  </script>
 
 
 <!-- 主题的启动项，将它保持在最底部 -->

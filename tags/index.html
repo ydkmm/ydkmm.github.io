@@ -407,6 +407,16 @@
 
 
 
+<!-- 页面焦点控制文字 -->
+
+  <script type="text/javascript">
+    /*窗口监视*/
+    var originalTitle = document.title;
+    window.onblur = function(){document.title = "等你回来~"};
+    window.onfocus = function(){document.title = originalTitle};
+  </script>
+
+
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>

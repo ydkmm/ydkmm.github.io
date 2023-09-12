@@ -287,7 +287,7 @@
       
         <a href="/categories/Hexo/" class="category-count col-2 col-md-1 col-xm-1">
           <i class="iconfont icon-articles"></i>
-          <span>6</span>
+          <span>7</span>
         </a>
       
       <div class="category-collapse collapse " id="collapse-c00d1eb68b529768ba98c975c76a9b66"
@@ -388,7 +388,7 @@
       
         <a href="/categories/Hexo/Fluid/" class="category-count col-2 col-md-1 col-xm-1">
           <i class="iconfont icon-articles"></i>
-          <span>2</span>
+          <span>3</span>
         </a>
       
       <div class="category-collapse collapse " id="collapse-c2e7db5ac7ab74ea4bb9a7a89d251f3a"
@@ -398,6 +398,15 @@
           
   <div class="category-post-list">
     
+    
+      
+      
+        <a href="/2023/09/12/Hexo/Fluid/Fluid-3-%E9%A1%B5%E9%9D%A2%E7%84%A6%E7%82%B9%E7%9B%91%E6%8E%A7%E6%96%87%E5%AD%97/" title="Fluid-3-页面焦点监控文字"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Fluid-3-页面焦点监控文字</span>
+        </a>
+      
     
       
       
@@ -563,6 +572,16 @@
   
 <script src="/custom/custom.js"></script>
 
+
+
+<!-- 页面焦点控制文字 -->
+
+  <script type="text/javascript">
+    /*窗口监视*/
+    var originalTitle = document.title;
+    window.onblur = function(){document.title = "等你回来~"};
+    window.onfocus = function(){document.title = originalTitle};
+  </script>
 
 
 <!-- 主题的启动项，将它保持在最底部 -->

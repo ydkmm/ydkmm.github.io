@@ -4,11 +4,38 @@
   
   
   <entry>
+    <title>Fluid-3-页面焦点监控文字</title>
+    <link href="/2023/09/12/Hexo/Fluid/Fluid-3-%E9%A1%B5%E9%9D%A2%E7%84%A6%E7%82%B9%E7%9B%91%E6%8E%A7%E6%96%87%E5%AD%97/"/>
+    <url>/2023/09/12/Hexo/Fluid/Fluid-3-%E9%A1%B5%E9%9D%A2%E7%84%A6%E7%82%B9%E7%9B%91%E6%8E%A7%E6%96%87%E5%AD%97/</url>
+    
+    <content type="html"><![CDATA[<h1 id="编辑-scripts-ejs"><a href="#编辑-scripts-ejs" class="headerlink" title="编辑 scripts.ejs"></a>编辑 <code>scripts.ejs</code></h1><ul><li>修改 <code>scripts.ejs</code>,文件路径 <code>node_modules\hexo-theme-fluid\layout\_partials\scripts.ejs</code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;% <span class="hljs-keyword">if</span>(theme.<span class="hljs-property">fun_features</span>.<span class="hljs-property">monitortext</span>.<span class="hljs-property">enable</span>) &#123; %&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">/*窗口监视*/</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">var</span> originalTitle = <span class="hljs-variable language_">document</span>.<span class="hljs-property">title</span>;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-variable language_">window</span>.<span class="hljs-property">onblur</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-variable language_">document</span>.<span class="hljs-property">title</span> = <span class="hljs-string">&quot;&lt;%- theme.fun_features.monitortext.text %&gt;&quot;</span>&#125;;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-variable language_">window</span>.<span class="hljs-property">onfocus</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-variable language_">document</span>.<span class="hljs-property">title</span> = originalTitle&#125;;</span></span><br><span class="language-javascript"><span class="language-xml">  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br>&lt;% &#125; %&gt;<br></code></pre></td></tr></table></figure></li></ul><h1 id="编辑主题配置文件"><a href="#编辑主题配置文件" class="headerlink" title="编辑主题配置文件"></a>编辑主题配置文件</h1><ul><li>在 <code>fun_features</code> 项下添加<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">monitortext:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">text:</span> <span class="hljs-string">等你回来~</span><br></code></pre></td></tr></table></figure><img src="/2023/09/12/Hexo/Fluid/Fluid-3-%E9%A1%B5%E9%9D%A2%E7%84%A6%E7%82%B9%E7%9B%91%E6%8E%A7%E6%96%87%E5%AD%97/%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AE%B9.png" alt="Alt text"></li></ul><h1 id="效果演示"><a href="#效果演示" class="headerlink" title="效果演示"></a>效果演示</h1><ul><li>当鼠标切换到其他标签页或点击其他应用时，博客标签页文字变化<br><img src="/2023/09/12/Hexo/Fluid/Fluid-3-%E9%A1%B5%E9%9D%A2%E7%84%A6%E7%82%B9%E7%9B%91%E6%8E%A7%E6%96%87%E5%AD%97/%E6%95%88%E6%9E%9C%E6%BC%94%E7%A4%BA.png" alt="Alt text"></li></ul><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hexo</category>
+      
+      <category>Fluid</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Hexo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Fluid-1-主题安装</title>
     <link href="/2023/09/12/Hexo/Fluid/Fluid-1-%E4%B8%BB%E9%A2%98%E5%AE%89%E8%A3%85/"/>
     <url>/2023/09/12/Hexo/Fluid/Fluid-1-%E4%B8%BB%E9%A2%98%E5%AE%89%E8%A3%85/</url>
     
-    <content type="html"><![CDATA[<div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
+    <content type="html"><![CDATA[<h1 id="安装最新版本的-fluid"><a href="#安装最新版本的-fluid" class="headerlink" title="安装最新版本的 fluid"></a>安装最新版本的 fluid</h1><ul><li>使用 npm 直接安装。进入到博客目录执行命令<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm install --save hexo-theme-fluid<br></code></pre></td></tr></table></figure></li></ul><h1 id="创建主题配置文件（hexo-5-0-0-版本以上）"><a href="#创建主题配置文件（hexo-5-0-0-版本以上）" class="headerlink" title="创建主题配置文件（hexo 5.0.0 版本以上）"></a>创建主题配置文件（hexo 5.0.0 版本以上）</h1><ul><li>在站点配置文件 <code>_config.yml</code> 同级目录创建主题配置文件 <code>_config_fluid.yml</code></li><li>参考 <a href="https://hexo.fluid-dev.com/docs/guide/#%E5%85%B3%E4%BA%8E%E6%8C%87%E5%8D%97">fluid 官方教程</a> 将 <a href="https://github.com/fluid-dev/hexo-theme-fluid/blob/master/_config.yml">_config.yaml</a> 内容复制到 <code>_config_fluid.yml</code> 中去</li><li>后续的主题配置，直接在 <code>_config.fluid.yml</code> 中修改</li></ul><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
     
     
     <categories>
