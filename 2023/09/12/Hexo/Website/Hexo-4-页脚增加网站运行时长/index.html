@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ydkmm.fun/2023/09/12/Hexo/Website/Hexo-4-%E9%A1%B5%E8%84%9A%E5%A2%9E%E5%8A%A0%E7%BD%91%E7%AB%99%E8%BF%90%E8%A1%8C%E6%97%B6%E9%95%BF/%E5%AE%9E%E4%BE%8B%E6%95%88%E6%9E%9C.png">
 <meta property="article:published_time" content="2023-09-12T03:08:05.000Z">
-<meta property="article:modified_time" content="2023-09-12T06:37:51.411Z">
+<meta property="article:modified_time" content="2023-09-12T06:45:25.517Z">
 <meta property="article:author" content="ydkmm">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary_large_image">
@@ -333,7 +333,7 @@
 <li>修改 duration.js 文件中的 <code>var start = new Date(&quot;2020/01/01 00:00:00&quot;);</code>，将时间修改为你想要的起始时间</li>
 </ul>
 <h1 id="修改主题配置文件"><a href="#修改主题配置文件" class="headerlink" title="修改主题配置文件"></a>修改主题配置文件</h1><ul>
-<li>在站点配置 <code>_config.yml</code> 中为 &#x2F;source&#x2F;custom 文件夹添加跳过渲染的选项，<code>ctrl + f</code> 搜索后修改如下<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">skip_render:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">vvd_js/**</span><br></code></pre></td></tr></table></figure></li>
+<li>在站点配置 <code>_config.yml</code> 中为 &#x2F;source&#x2F;custom 文件夹添加跳过渲染的选项，<code>ctrl + f</code> 搜索后修改如下<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">skip_render:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">custom/**</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 <h1 id="修改主题配置文件-1"><a href="#修改主题配置文件-1" class="headerlink" title="修改主题配置文件"></a>修改主题配置文件</h1><ul>
 <li>在主题配置文件中 <code>footer: content</code> 修改如下<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">footer:</span><br>  <span class="hljs-attr">content:</span> <span class="hljs-string">&#x27;</span><br><span class="hljs-string">    &lt;a href=&quot;https://hexo.io&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener&quot;&gt;&lt;span&gt;Hexo&lt;/span&gt;&lt;/a&gt;</span><br><span class="hljs-string">    &lt;i class=&quot;iconfont icon-love&quot;&gt;&lt;/i&gt;</span><br><span class="hljs-string">    &lt;a href=&quot;https://github.com/fluid-dev/hexo-theme-fluid&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener&quot;&gt;&lt;span&gt;Fluid&lt;/span&gt;&lt;/a&gt;</span><br><span class="hljs-string">    &lt;div style=&quot;font-size: 0.85rem&quot;&gt;</span><br><span class="hljs-string">      &lt;span id=&quot;timeDate&quot;&gt;载入天数...&lt;/span&gt;</span><br><span class="hljs-string">      &lt;span id=&quot;times&quot;&gt;载入时分秒...&lt;/span&gt;</span><br><span class="hljs-string">      &lt;script src=&quot;/custom/duration.js&quot;&gt;&lt;/script&gt;</span><br><span class="hljs-string">    &lt;/div&gt;</span><br><span class="hljs-string">  &#x27;</span><br></code></pre></td></tr></table></figure></li>
@@ -342,10 +342,9 @@
 <h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><blockquote>
 <p>跳过渲染的文件会不做改动地输出到 <code>public</code> 文件夹下，参考<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration#%E7%9B%AE%E5%BD%95">官方文档</a><br>若出现修改了 <code>/source/custom/duration.js</code> 内容但是不起作用，可以尝试注释掉 <code>_config.yml</code> 中的配置，重新部署查看（多尝试）<br>或者别试了，直接修改 <code>/public/custom/duration.js</code> 内容，注意部署的时候查看内容是否被修改</p>
 </blockquote>
-<blockquote>
-<p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>
-</blockquote>
-
+<div class="note note-info">
+            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>
+          </div>
                 
               </div>
             
@@ -441,6 +440,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/09/12/Hexo/Fluid/Fluid-2-note%E7%BE%8E%E5%8C%96/" title="Fluid-2-note美化">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Fluid-2-note美化</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
