@@ -18,24 +18,24 @@
   <meta name="author" content="ydkmm">
   <meta name="keywords" content="个人博客,云原生,kubernetes,docker">
   
-    <meta name="description" content="init1hexo init [folder]  新建网站如果没有指定 folder，则默认在当前文件夹新建网站  new1hexo new [layout] &lt;title&gt;  新建文章layout 指生成文章的模板，在 scaffolds 设置模板，且不指定时，默认使用 _config.yml 参数代替，例如假设存在名为 k8s 的模板，使用该模板创建文章的命令为 hexo new">
+    <meta name="description" content="前言在 Kubernetes 中我们经常使用 Deployment、DaemonSet、Service、ConfigMap 等资源，这些资源都是 Kubernetes 的内置资源，它们的创建、更新、删除等均由 Controller Manager 负责管理，触发相应的动作来满足期望状态（Spec），这种声明式的方式简化了用户的操作，用户在使用时只需关心应用程序的最终状态即可。随着 Kubernet">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo-2-常用命令">
-<meta property="og:url" content="https://ydkmm.fun/2023/09/12/Hexo/Website/Hexo-2-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:title" content="Operator-1-operator介绍">
+<meta property="og:url" content="https://ydkmm.fun/2023/09/13/Kubernetes/Operator/Operator-1-operator%E4%BB%8B%E7%BB%8D/index.html">
 <meta property="og:site_name" content="一大口毛毛">
-<meta property="og:description" content="init1hexo init [folder]  新建网站如果没有指定 folder，则默认在当前文件夹新建网站  new1hexo new [layout] &lt;title&gt;  新建文章layout 指生成文章的模板，在 scaffolds 设置模板，且不指定时，默认使用 _config.yml 参数代替，例如假设存在名为 k8s 的模板，使用该模板创建文章的命令为 hexo new">
+<meta property="og:description" content="前言在 Kubernetes 中我们经常使用 Deployment、DaemonSet、Service、ConfigMap 等资源，这些资源都是 Kubernetes 的内置资源，它们的创建、更新、删除等均由 Controller Manager 负责管理，触发相应的动作来满足期望状态（Spec），这种声明式的方式简化了用户的操作，用户在使用时只需关心应用程序的最终状态即可。随着 Kubernet">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-12T00:47:52.000Z">
-<meta property="article:modified_time" content="2023-09-13T01:47:07.856Z">
+<meta property="article:published_time" content="2023-09-13T01:45:27.000Z">
+<meta property="article:modified_time" content="2023-09-13T03:14:30.645Z">
 <meta property="article:author" content="ydkmm">
-<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Kubernetes">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Hexo-2-常用命令 - 一大口毛毛</title>
+  <title>Operator-1-operator介绍 - 一大口毛毛</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -245,7 +245,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hexo-2-常用命令"></span>
+            <span id="subtitle" data-typed-text="Operator-1-operator介绍"></span>
           
         </div>
 
@@ -261,8 +261,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-12 08:47" pubdate>
-          2023年9月12日 早上
+        <time datetime="2023-09-13 09:45" pubdate>
+          2023年9月13日 上午
         </time>
       </span>
     
@@ -273,7 +273,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          499 字
+          1.5k 字
         
       </span>
     
@@ -284,7 +284,7 @@
         
         
         
-          5 分钟
+          13 分钟
         
       </span>
     
@@ -321,43 +321,15 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hexo-2-常用命令</h1>
+            <h1 id="seo-header">Operator-1-operator介绍</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="init"><a href="#init" class="headerlink" title="init"></a>init</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo init [folder]<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>新建网站<br>如果没有指定 <code>folder</code>，则默认在当前文件夹新建网站</p>
-</blockquote>
-<h1 id="new"><a href="#new" class="headerlink" title="new"></a>new</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo new [layout] &lt;title&gt;<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>新建文章<br><code>layout</code> 指生成文章的模板，在 <code>scaffolds</code> 设置模板，且不指定时，默认使用 <code>_config.yml</code> 参数代替，例如假设存在名为 <code>k8s</code> 的模板，使用该模板创建文章的命令为 <code>hexo new k8s k8s入门</code><br><code>title</code> 指生成文章的名字，若存在空格则使用双引号括起来，例如 <code>hexo new &quot;post title with space&quot;</code></p>
-</blockquote>
-<h1 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo generate<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>生成静态文件，简写为 <code>hexo g</code></p>
-</blockquote>
-<h1 id="server"><a href="#server" class="headerlink" title="server"></a>server</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo server<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>启动服务，简写为 <code>hexo s</code></p>
-</blockquote>
-<h1 id="deploy"><a href="#deploy" class="headerlink" title="deploy"></a>deploy</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo deploy<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>部署网站</p>
-</blockquote>
-<h1 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo clean<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>清除缓存文件 <code>db.json</code> 和已生成的静态文件 <code>public</code>，简写为 <code>hexo c</code></p>
-</blockquote>
-<h1 id="常用组合命令"><a href="#常用组合命令" class="headerlink" title="常用组合命令"></a>常用组合命令</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo c; hexo g; hexo s<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>清除缓存、重新生成静态文件、启动服务</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo c; hexo g; hexo d<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>清除缓存、重新生成静态文件、部署网站</p>
-</blockquote>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在 Kubernetes 中我们经常使用 Deployment、DaemonSet、Service、ConfigMap 等资源，这些资源都是 Kubernetes 的内置资源，它们的创建、更新、删除等均由 Controller Manager 负责管理，触发相应的动作来满足期望状态（Spec），这种声明式的方式简化了用户的操作，用户在使用时只需关心应用程序的最终状态即可。随着 Kubernetes 的发展，在大数据、人工智能等领域出现了一些场景更为复杂的分布式应用系统，原生 Kubernetes 内置资源在这些场景下就显得有些力不从心。</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>（1）不同应用平台需要管理的目标各有差异，如何在 Kubernetes 中兼容定义管理的目标？<br>（2）如何管理和备份系统的应用数据，协调各应用之间不同生命周期的状态？<br>（3）能否用同样的 Kubectl 命令来管理自己定义的复杂分布式应用？<br>在这些场景下，Kubernetes 自身基础模型已经无法支撑不同业务领域下的自动化场景。为了满足这些需求，谷歌提出了 Third Party Resources（TPR）概念，允许开发者根据业务需求的变化自定义资源和控制器，用于编写面向领域知识的业务逻辑控制，这就是Operator 的核心概念。</p>
+<h1 id="Operator-概念"><a href="#Operator-概念" class="headerlink" title="Operator 概念"></a>Operator 概念</h1><p>Operator 是一种封装、部署和管理 Kubernetes 应用的方法，用户可以使用 Kubernetes API 和 Kubectl 工具在 Kubernetes 上部署并管理 Kubernetes 应用。Operator 基于基本 Kubernetes 资源和控制器概念构建，但又涵盖了特定领域或应用的知识，用于实现其所管理软件的整个生命周期的自动化，它是一种特定于应用的控制器，可扩展 Kubernetes API 的功能，是 Kubernetes 用户创建、配置和管理复杂应用的实例。<br>在 Kubernetes 内置资源中，Controller Manager 实施控制循环，反复比较集群中的期望状态和实际状态，如果集群的实际状态和期望状态不一致，则采取措施使二者一致。Operator 使用自定义资源（CR）管理应用，CR 引入新的对象类型后，Operator 监视 CR 类型，并采取特定于应用的操作，确保 CR 对象当前实际状态和期望状态一致，用户可通过在 Operator 中编写自定义规则来扩展新功能和更新现有功能，可以像操作 Kubernetes 原生组件一样，通过声明式的方式定义一组业务应用的期望状态，监控操作自定义资源，该特性使 Operator 几乎可以在 Kubernetes 中执行任何操作，包括扩展复杂的应用、版本升级、管理有状态的服务等。这种设计使应用维护人员只需要关注配置自身应用的期望运行状态，而无须投入大量的精力在部署应用或业务运行过程中频繁操作可能出错的运维命令。</p>
+<h1 id="Operator-组成"><a href="#Operator-组成" class="headerlink" title="Operator 组成"></a>Operator 组成</h1><p>简单来说 Operator&#x3D;Controller+CRD，Operator 是由 Kubernetes 自定义资源（CRD）和控制器（Controller）构成的云原生拓展服务，其中 CRD 定义了每个 Operator 需要创建和管理的自定义资源对象，底层实际就是通过 APIServer 接口在 ETCD 中注册一种新的资源类型，注册完成后就可以创建该资源类型的对象了。但是仅注册资源和创建资源对象是没有任何实际意义的，CRD 最重要的是需要配合对应的 Controller 来实现自定义资源的功能，达到自定义资源期望的状态，比如内置的 Deployment Controller 用来控制 Deployment 资源的功能，根据配置生成特定数量的 Pod 监控其状态，并根据事件做出相应的动作。</p>
 <div class="note note-info">
             <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>
           </div>
@@ -399,12 +371,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Hexo/" class="category-chain-item">Hexo</a>
+  <a href="/categories/Kubernetes/" class="category-chain-item">Kubernetes</a>
   
   
     <span>></span>
     
-  <a href="/categories/Hexo/Website/" class="category-chain-item">Website</a>
+  <a href="/categories/Kubernetes/Operator/" class="category-chain-item">Operator</a>
   
   
 
@@ -421,7 +393,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Hexo/" class="print-no-link">#Hexo</a>
+        <a href="/tags/Kubernetes/" class="print-no-link">#Kubernetes</a>
       
     </div>
   
@@ -433,8 +405,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hexo-2-常用命令</div>
-      <div>https://ydkmm.fun/2023/09/12/Hexo/Website/Hexo-2-常用命令/</div>
+      <div>Operator-1-operator介绍</div>
+      <div>https://ydkmm.fun/2023/09/13/Kubernetes/Operator/Operator-1-operator介绍/</div>
     </div>
     <div class="license-meta">
       
@@ -446,7 +418,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月12日</div>
+          <div>2023年9月13日</div>
         </div>
       
       
@@ -478,9 +450,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/12/Hexo/Website/Hexo-3-%E6%96%87%E7%AB%A0%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/" title="Hexo-3-文章中添加图片">
+                      <a href="/2023/09/13/Kubernetes/Operator/Operator-2-operator%E4%BD%BF%E7%94%A8/" title="Operator-2-operator使用">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Hexo-3-文章中添加图片</span>
+                        <span class="hidden-mobile">Operator-2-operator使用</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -488,8 +460,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/11/Hexo/Website/Hexo-1-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" title="Hexo-1-博客搭建基础教程">
-                        <span class="hidden-mobile">Hexo-1-博客搭建基础教程</span>
+                      <a href="/2023/09/12/Hexo/Fluid/Fluid-4-%E6%89%93%E8%B5%8F%E5%8A%9F%E8%83%BD/" title="Fluid-4-打赏功能">
+                        <span class="hidden-mobile">Fluid-4-打赏功能</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
