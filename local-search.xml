@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>Fluid-5-设置文章背景透明度</title>
+    <link href="/2023/09/14/Hexo/Fluid/Fluid-5-%E8%AE%BE%E7%BD%AE%E6%96%87%E7%AB%A0%E8%83%8C%E6%99%AF%E9%80%8F%E6%98%8E%E5%BA%A6/"/>
+    <url>/2023/09/14/Hexo/Fluid/Fluid-5-%E8%AE%BE%E7%BD%AE%E6%96%87%E7%AB%A0%E8%83%8C%E6%99%AF%E9%80%8F%E6%98%8E%E5%BA%A6/</url>
+    
+    <content type="html"><![CDATA[<h1 id="修改-Fluid-主题配置文件"><a href="#修改-Fluid-主题配置文件" class="headerlink" title="修改 Fluid 主题配置文件"></a>修改 Fluid 主题配置文件</h1><p>找到 color 属性，修改 <code>board_color</code> 和 <code>board_color_dark</code>，分别对应着白天和夜间模式的文章背景颜色<br><img src="/2023/09/14/Hexo/Fluid/Fluid-5-%E8%AE%BE%E7%BD%AE%E6%96%87%E7%AB%A0%E8%83%8C%E6%99%AF%E9%80%8F%E6%98%8E%E5%BA%A6/color%E5%B1%9E%E6%80%A7.png" alt="Alt text"></p><h1 id="背景完全透明"><a href="#背景完全透明" class="headerlink" title="背景完全透明"></a>背景完全透明</h1><p>修改 <code>board_color</code> 和 <code>board_color_dark</code> 的值为 <code>transparent</code> </p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">color:</span><br>  <span class="hljs-string">...</span><br>  <span class="hljs-attr">board_color:</span> <span class="hljs-string">transparent</span><br>  <span class="hljs-attr">board_color_dark:</span> <span class="hljs-string">transparent</span><br>  <span class="hljs-string">...</span><br></code></pre></td></tr></table></figure><h1 id="背景设置模糊度"><a href="#背景设置模糊度" class="headerlink" title="背景设置模糊度"></a>背景设置模糊度</h1><p>修改 <code>board_color</code> 和 <code>board_color_dark</code> 的值，颜色的为 rgba 类型的值， rgba 是 rgb 颜色的基础上添加一个模糊度属性<br>具体修改如下</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">color:</span><br>  <span class="hljs-string">...</span><br>  <span class="hljs-attr">board_color:</span> <span class="hljs-string">rgba(132,197,203,</span> <span class="hljs-number">0.8</span><span class="hljs-string">)</span> <br>  <span class="hljs-attr">board_color_dark:</span> <span class="hljs-string">rgba(132,197,203,</span> <span class="hljs-number">0.8</span><span class="hljs-string">)</span><br>  <span class="hljs-string">...</span><br></code></pre></td></tr></table></figure><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hexo</category>
+      
+      <category>Fluid</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Hexo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Operator-2-operator使用</title>
     <link href="/2023/09/13/Kubernetes/Operator/Operator-2-operator%E4%BD%BF%E7%94%A8/"/>
     <url>/2023/09/13/Kubernetes/Operator/Operator-2-operator%E4%BD%BF%E7%94%A8/</url>
