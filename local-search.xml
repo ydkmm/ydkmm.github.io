@@ -4,6 +4,87 @@
   
   
   <entry>
+    <title>乱七八糟-1-卷名称命名规范</title>
+    <link href="/2023/09/18/Kubernetes/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F-1-%E5%8D%B7%E5%90%8D%E7%A7%B0%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/"/>
+    <url>/2023/09/18/Kubernetes/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F-1-%E5%8D%B7%E5%90%8D%E7%A7%B0%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/</url>
+    
+    <content type="html"><![CDATA[<h1 id="在Kubernetes中，Pod-的-Volume-Name（卷名称）必须符合RFC-1123中的规范，遵循以下格式要求："><a href="#在Kubernetes中，Pod-的-Volume-Name（卷名称）必须符合RFC-1123中的规范，遵循以下格式要求：" class="headerlink" title="在Kubernetes中，Pod 的 Volume Name（卷名称）必须符合RFC 1123中的规范，遵循以下格式要求："></a>在Kubernetes中，Pod 的 Volume Name（卷名称）必须符合RFC 1123中的规范，遵循以下格式要求：</h1><ul><li><strong>只能包含小写字母、数字和连字符（-）</strong></li><li>必须以字母或数字开头</li><li>必须以字母或数字结尾</li><li>长度不能超过63个字符</li></ul><h1 id="根据这些要求，以下是一些有效的卷名称示例："><a href="#根据这些要求，以下是一些有效的卷名称示例：" class="headerlink" title="根据这些要求，以下是一些有效的卷名称示例："></a>根据这些要求，以下是一些有效的卷名称示例：</h1><ul><li>my-volume</li><li>data-volume</li><li>app123</li></ul><h1 id="以下是一些无效的卷名称示例："><a href="#以下是一些无效的卷名称示例：" class="headerlink" title="以下是一些无效的卷名称示例："></a>以下是一些无效的卷名称示例：</h1><ul><li>MyVolume (包含大写字母)</li><li>volume_name (包含下划线)</li></ul><h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul><li><a href="https://kubernetes.io/zh-cn/docs/concepts/overview/working-with-objects/names/">对象名称和 id</a></li></ul><h1 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h1><ul><li>[spec.volumes[0].name: Invalid value: “volume name”: a lowercase RFC 1123 label must consist of lower case alphanumeric characters or ‘-‘, and must start and end with an alphanumeric character (e.g. ‘my-name’, or ‘123-abc’, regex used for v</li></ul><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>Kubernetes</category>
+      
+      <category>乱七八糟</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Kubernetes</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Storage-1-卷</title>
+    <link href="/2023/09/14/Kubernetes/Storage/Storage-1-%E5%8D%B7/"/>
+    <url>/2023/09/14/Kubernetes/Storage/Storage-1-%E5%8D%B7/</url>
+    
+    <content type="html"><![CDATA[<h1 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h1><ul><li>k8s 支持多种类型的卷，pod 可以同时使用任意数目的卷类型</li><li><strong>临时卷</strong> 类型的生命周期和 pod 相同，当 pod 不再存在时，k8s 会销毁临时卷</li><li><strong>持久卷</strong> 可以比 pod 的存活期长，当 pod 不再存在时，k8s 不会销毁持久卷<div class="note note-primary no-icon">            <p>对于 pod 中任何类型的卷，在容器重启期间数据都不会丢失</p>          </div></li><li>通过设置 <code>.spec.volumes</code> 字段为 pod 提供卷，设置 <code>.spec.containers[*].volumeMounts</code> 字段生命卷在容器中的挂在位置</li><li>容器中的进程看到的文件系统由 <strong>容器镜像的初始内容</strong> 和 <strong>挂载在容器中的卷（若果有的话）</strong> 组成</li><li>卷挂载在镜像中的指定路径下，pod 中的每一个容器都必须独立指定各个卷的挂载位置</li></ul><h1 id="卷类型"><a href="#卷类型" class="headerlink" title="卷类型"></a>卷类型</h1><h3 id="cephfs"><a href="#cephfs" class="headerlink" title="cephfs"></a>cephfs</h3><ul><li>cephfs 卷允许你将现存的 CephFS 卷挂载到 Pod 中</li><li>不像 emptyDir 那样会在 Pod 被删除的同时也会被删除，cephfs 卷的内容在 Pod 被删除时会被保留，只是卷被卸载了</li><li>这意味着 cephfs 卷可以被预先填充数据，且这些数据可以在 Pod 之间共享</li><li>同一 cephfs 卷可同时被多个写者挂载。  <div class="note note-primary">            <p><strong>优点</strong><br>读取延迟低，I&#x2F;O 带宽表现良好，尤其是 block size 较大一些的文件<br>灵活度高，支持k8s的所有接入模式</p>          </div><div class="note note-danger">            <p><strong>缺点</strong><br>写入延迟相对较高且延迟时间不稳定</p>          </div><div class="note note-success">            <p><strong>适用场景</strong><br>适用于要求灵活度高(支持k8s多节点挂载特性)，对 I&#x2F;O 延迟不甚敏感的文件读写操作，以及非海量的小文件存储支持。例如作为常用的应用&#x2F;中间件挂载存储后端</p>          </div></li></ul><h3 id="configMap"><a href="#configMap" class="headerlink" title="configMap"></a>configMap</h3><ul><li>ConfigMap 对象中存储的数据可以被 configMap 类型的卷引用，然后被 Pod 中运行的容器化应用使用</li><li>引用 configMap 对象时，你可以在卷中通过它的名称来引用，同时可以自定义 ConfigMap 中特定条目所要使用的路径。如下所示，将名为 <code>log-config</code> 的 ConfigMap 挂载到名为 <code>configmap-pod</code> 的 pod 中<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span><br><span class="hljs-attr">kind:</span> <span class="hljs-string">Pod</span><br><span class="hljs-attr">metadata:</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">configmap-pod</span><br><span class="hljs-attr">spec:</span><br>  <span class="hljs-attr">containers:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">test</span><br>      <span class="hljs-attr">image:</span> <span class="hljs-string">busybox:1.28</span><br>      <span class="hljs-attr">volumeMounts:</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">config-vol</span><br>          <span class="hljs-attr">mountPath:</span> <span class="hljs-string">/etc/config</span><br>  <span class="hljs-attr">volumes:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">config-vol</span><br>      <span class="hljs-attr">configMap:</span><br>        <span class="hljs-attr">name:</span> <span class="hljs-string">log-config</span><br>        <span class="hljs-attr">items:</span><br>          <span class="hljs-bullet">-</span> <span class="hljs-attr">key:</span> <span class="hljs-string">log_level</span><br>            <span class="hljs-attr">path:</span> <span class="hljs-string">log_level</span><br></code></pre></td></tr></table></figure></li></ul><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>Kubernetes</category>
+      
+      <category>Storage</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Kubernetes</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Operator-3-operator应用案例（kubebuilder实现）</title>
+    <link href="/2023/09/14/Kubernetes/Operator/Operator-3-operator%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B%EF%BC%88kubebuilder%E5%AE%9E%E7%8E%B0%EF%BC%89/"/>
+    <url>/2023/09/14/Kubernetes/Operator/Operator-3-operator%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B%EF%BC%88kubebuilder%E5%AE%9E%E7%8E%B0%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<h1 id="kubebuilder-介绍"><a href="#kubebuilder-介绍" class="headerlink" title="kubebuilder 介绍"></a>kubebuilder 介绍</h1><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>Kubernetes</category>
+      
+      <category>Operator</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Kubernetes</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Fluid-5-设置文章背景透明度</title>
     <link href="/2023/09/14/Hexo/Fluid/Fluid-5-%E8%AE%BE%E7%BD%AE%E6%96%87%E7%AB%A0%E8%83%8C%E6%99%AF%E9%80%8F%E6%98%8E%E5%BA%A6/"/>
     <url>/2023/09/14/Hexo/Fluid/Fluid-5-%E8%AE%BE%E7%BD%AE%E6%96%87%E7%AB%A0%E8%83%8C%E6%99%AF%E9%80%8F%E6%98%8E%E5%BA%A6/</url>
@@ -35,7 +116,7 @@
     <link href="/2023/09/13/Kubernetes/Operator/Operator-2-operator%E4%BD%BF%E7%94%A8/"/>
     <url>/2023/09/13/Kubernetes/Operator/Operator-2-operator%E4%BD%BF%E7%94%A8/</url>
     
-    <content type="html"><![CDATA[<h1 id="Operator-使用"><a href="#Operator-使用" class="headerlink" title="Operator 使用"></a>Operator 使用</h1><p>用户想为自己的自定义资源构建一个 Kubernetes Operator，有很多工具可供选择，比如 Operator SDK、Kubebuilder，甚至可以使用 Operator SDK（Helm、Ansible、Go）。这些工具创建 Kubernetes Operator 用来监控自定义资源，并且根据资源的变化调整资源状态，如图所示<br><img src="/2023/09/13/Kubernetes/Operator/Operator-2-operator%E4%BD%BF%E7%94%A8/Operator%E4%BD%BF%E7%94%A8.png" alt="Alt text"><br>Operator 作为自定义扩展资源以 Deployment 的方式部署到 k8s 中，通过 List-Watch 方式监听对应资源的变化，当用户修改自定义资源中的任何内容时，Operator 会监控资源的更改，并根据更改内容执行特定的操作，这些操作通常会对 Kubernetes API 中某些资源进行调用。</p><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
+    <content type="html"><![CDATA[<h1 id="Operator-使用"><a href="#Operator-使用" class="headerlink" title="Operator 使用"></a>Operator 使用</h1><p>用户想为自己的自定义资源构建一个 Kubernetes Operator，有很多工具可供选择，比如 Operator SDK、Kubebuilder，甚至可以使用 Operator SDK（Helm、Ansible、Go）。这些工具创建 Kubernetes Operator 用来监控自定义资源，并且根据资源的变化调整资源状态，如图所示<br><img src="/2023/09/13/Kubernetes/Operator/Operator-2-operator%E4%BD%BF%E7%94%A8/Operator%E4%BD%BF%E7%94%A8.png" alt="Alt text"><br>Operator 作为自定义扩展资源以 Deployment 的方式部署到 k8s 中，通过 List-Watch 方式监听对应资源的变化，当用户修改自定义资源中的任何内容时，Operator 会监控资源的更改，并根据更改内容执行特定的操作，这些操作通常会对 Kubernetes API 中某些资源进行调用。</p><h1 id="Operator-应用案例"><a href="#Operator-应用案例" class="headerlink" title="Operator 应用案例"></a>Operator 应用案例</h1><p>前面介绍了基于 CR 和相应的自定义资源控制器，我们可以自定义扩展 Kubernetes 原生的模型元素，这样的自定义模型可以加入到原生 Kubernetes API 管理；同时 Operator开发者可以像使用原生 API 进行应用管理一样，通过声明式的方式定义一组业务应用的期状态，并且根据业务应用的自身特点编写相应控制器逻辑，以此完成对应用运行时刻生命周期的管理，并持续维护与期望状态的一致性。在本节我们将介绍如何使用 Kubebuilder 工具，快速构建一个 Kubernetes Operator，通过创建 CRD 完成一个简单的 Web 应用部署，通过编写控制器相关业务逻辑，完成对 CRD 的自动化管理。</p><h3 id="Kubebuilder-介绍"><a href="#Kubebuilder-介绍" class="headerlink" title="Kubebuilder 介绍"></a>Kubebuilder 介绍</h3><p>Kubebuilder 是一个用 Go 语言构建 Kubernetes API 控制器和 CRD 的脚手架工具，通过使用 Kubebuilder，用户可以遵循一套简单的编程框架，编写 Operator 应用实例。</p><h3 id="Welcome-案例介绍"><a href="#Welcome-案例介绍" class="headerlink" title="Welcome 案例介绍"></a>Welcome 案例介绍</h3><p>Welcome 案例主要实现使用 Operator 和 CRD 部署一套完整的应用环境，可以实现根据自定义类型创建资源，通过创建一个 Welcome 类型的资源，后台自动创建 Deployment和 Service，通过 Web 页面访问 Service 呈现应用部署，通过自定义控制器方式进行控制管理，整体流程如图所示<br><img src="/2023/09/13/Kubernetes/Operator/Operator-2-operator%E4%BD%BF%E7%94%A8/%E6%B5%81%E7%A8%8B.png" alt="Alt text"></p><h3 id="具体实施"><a href="#具体实施" class="headerlink" title="具体实施"></a>具体实施</h3><p>具体的实施过程在下一篇文章演示</p><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
     
     
     <categories>
@@ -251,7 +332,7 @@
     <link href="/2023/09/12/Hexo/Website/Hexo-2-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
     <url>/2023/09/12/Hexo/Website/Hexo-2-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     
-    <content type="html"><![CDATA[<h1 id="init"><a href="#init" class="headerlink" title="init"></a>init</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo init [folder]<br></code></pre></td></tr></table></figure><blockquote><p>新建网站<br>如果没有指定 <code>folder</code>，则默认在当前文件夹新建网站</p></blockquote><h1 id="new"><a href="#new" class="headerlink" title="new"></a>new</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo new [layout] &lt;title&gt;<br></code></pre></td></tr></table></figure><blockquote><p>新建文章<br><code>layout</code> 指生成文章的模板，在 <code>scaffolds</code> 设置模板，且不指定时，默认使用 <code>_config.yml</code> 参数代替，例如假设存在名为 <code>k8s</code> 的模板，使用该模板创建文章的命令为 <code>hexo new k8s k8s入门</code><br><code>title</code> 指生成文章的名字，若存在空格则使用双引号括起来，例如 <code>hexo new &quot;post title with space&quot;</code></p></blockquote><h1 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo generate<br></code></pre></td></tr></table></figure><blockquote><p>生成静态文件，简写为 <code>hexo g</code></p></blockquote><h1 id="server"><a href="#server" class="headerlink" title="server"></a>server</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo server<br></code></pre></td></tr></table></figure><blockquote><p>启动服务，简写为 <code>hexo s</code></p></blockquote><h1 id="deploy"><a href="#deploy" class="headerlink" title="deploy"></a>deploy</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo deploy<br></code></pre></td></tr></table></figure><blockquote><p>部署网站</p></blockquote><h1 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo clean<br></code></pre></td></tr></table></figure><blockquote><p>清除缓存文件 <code>db.json</code> 和已生成的静态文件 <code>public</code>，简写为 <code>hexo c</code></p></blockquote><h1 id="常用组合命令"><a href="#常用组合命令" class="headerlink" title="常用组合命令"></a>常用组合命令</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo c; hexo g; hexo s<br></code></pre></td></tr></table></figure><blockquote><p>清除缓存、重新生成静态文件、启动服务</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo c; hexo g; hexo d<br></code></pre></td></tr></table></figure><blockquote><p>清除缓存、重新生成静态文件、部署网站</p></blockquote><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
+    <content type="html"><![CDATA[<h1 id="init"><a href="#init" class="headerlink" title="init"></a>init</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo init [folder]<br></code></pre></td></tr></table></figure><blockquote><p>新建网站<br>如果没有指定 <code>folder</code>，则默认在当前文件夹新建网站</p></blockquote><h1 id="new"><a href="#new" class="headerlink" title="new"></a>new</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo new [layout] &lt;title&gt;<br></code></pre></td></tr></table></figure><blockquote><p>新建文章<br><code>layout</code> 指生成文章的模板，在 <code>scaffolds</code> 设置模板，且不指定时，默认使用 <code>_config.yml</code> 参数代替，例如假设存在名为 <code>k8s</code> 的模板，使用该模板创建文章的命令为 <code>hexo new k8s k8s入门</code><br><code>title</code> 指生成文章的名字，若存在空格则使用双引号括起来，例如 <code>hexo new &quot;post title with space&quot;</code></p></blockquote><h1 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo generate<br></code></pre></td></tr></table></figure><blockquote><p>生成静态文件，简写为 <code>hexo g</code></p></blockquote><h1 id="server"><a href="#server" class="headerlink" title="server"></a>server</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo server<br></code></pre></td></tr></table></figure><blockquote><p>启动服务，简写为 <code>hexo s</code></p></blockquote><h1 id="deploy"><a href="#deploy" class="headerlink" title="deploy"></a>deploy</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo deploy<br></code></pre></td></tr></table></figure><blockquote><p>部署网站</p></blockquote><h1 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo clean<br></code></pre></td></tr></table></figure><blockquote><p>清除缓存文件 <code>db.json</code> 和已生成的静态文件 <code>public</code>，简写为 <code>hexo c</code></p></blockquote><h1 id="常用组合命令"><a href="#常用组合命令" class="headerlink" title="常用组合命令"></a>常用组合命令</h1><blockquote><p>清除缓存、重新生成静态文件、启动服务</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo c; hexo g; hexo s<br></code></pre></td></tr></table></figure><blockquote><p>清除缓存、重新生成静态文件、部署网站</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo c; hexo g; hexo d<br><span class="hljs-meta prompt_"># </span><span class="language-bash">若修改不显示，则分开执行并写全命令，不要缩写</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">hexo clean</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">hexo generate</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">hexo deploy</span><br></code></pre></td></tr></table></figure><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
     
     
     <categories>
