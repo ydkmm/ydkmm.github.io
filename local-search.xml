@@ -4,16 +4,186 @@
   
   
   <entry>
-    <title>工具网站</title>
-    <link href="/2023/09/21/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/"/>
-    <url>/2023/09/21/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/</url>
+    <title>网站收藏-github项目</title>
+    <link href="/2023/09/21/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F-github%E9%A1%B9%E7%9B%AE/"/>
+    <url>/2023/09/21/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F-github%E9%A1%B9%E7%9B%AE/</url>
     
-    <content type="html"><![CDATA[<h1 id="文件处理"><a href="#文件处理" class="headerlink" title="文件处理"></a>文件处理</h1><h3 id="文件处理-1"><a href="#文件处理-1" class="headerlink" title="文件处理"></a><a href="https://tinywow.com/">文件处理</a></h3><h3 id="文件格式转换"><a href="#文件格式转换" class="headerlink" title="文件格式转换"></a><a href="https://cn.office-converter.com/">文件格式转换</a></h3><h1 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h1><h3 id="base64-在线编码解码"><a href="#base64-在线编码解码" class="headerlink" title="base64 在线编码解码"></a><a href="https://base64.us/">base64 在线编码解码</a></h3><h3 id="取色器"><a href="#取色器" class="headerlink" title="取色器"></a><a href="http://www.ecjson.com/image_color#9d136d">取色器</a></h3><h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><h3 id="软件破解"><a href="#软件破解" class="headerlink" title="软件破解"></a><a href="https://www.exception.site/">软件破解</a></h3><h1 id="壁纸"><a href="#壁纸" class="headerlink" title="壁纸"></a>壁纸</h1><h3 id="高清壁纸"><a href="#高清壁纸" class="headerlink" title="高清壁纸"></a><a href="https://www.bizhi99.com/">高清壁纸</a></h3><h3 id=""><a href="#" class="headerlink" title=""></a><a href=""></a></h3><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
+    <content type="html"><![CDATA[<ul><li><a href="https://github.com/kubernetes-sigs/controller-runtime">kubernetes-sigs&#x2F;controller-runtime</a></li></ul><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
     
     
     <categories>
       
-      <category>乱七八糟</category>
+      <category>网站收藏</category>
+      
+      <category>github</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>网站收藏</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>golang-开启mod后import仍然报红</title>
+    <link href="/2023/09/21/golang/golang-%E5%BC%80%E5%90%AFmod%E5%90%8Eimport%E4%BB%8D%E7%84%B6%E6%8A%A5%E7%BA%A2/"/>
+    <url>/2023/09/21/golang/golang-%E5%BC%80%E5%90%AFmod%E5%90%8Eimport%E4%BB%8D%E7%84%B6%E6%8A%A5%E7%BA%A2/</url>
+    
+    <content type="html"><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>创建项目后，开启 mod 模式后，在使用 import 导入相关包后，使用 go mod tidy 生成 go.mod 文件后，go.mod 文件里面的包名变红(未导入)，导致不能使用包里面的方法，go run main.go 报错: package xxx is not in GOROOT，如下图<br><img src="/2023/09/21/golang/golang-%E5%BC%80%E5%90%AFmod%E5%90%8Eimport%E4%BB%8D%E7%84%B6%E6%8A%A5%E7%BA%A2/%E6%8A%A5%E9%94%99.png" alt="Alt text"></p><div class="note note-warning">            <p>不过 go.mod 里面的包没有被引入<br>猜测是索引路径出了问题，当前项目的依赖路径如下，可以看到只有 sdk 没有 go mod 模块</p>          </div><p><img src="/2023/09/21/golang/golang-%E5%BC%80%E5%90%AFmod%E5%90%8Eimport%E4%BB%8D%E7%84%B6%E6%8A%A5%E7%BA%A2/sdk.png" alt="Alt text"></p><h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p><img src="/2023/09/21/golang/golang-%E5%BC%80%E5%90%AFmod%E5%90%8Eimport%E4%BB%8D%E7%84%B6%E6%8A%A5%E7%BA%A2/%E8%AE%BE%E7%BD%AEgomod.png" alt="Alt text"></p><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>golang</category>
+      
+      <category>goland</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>golang</tag>
+      
+      <tag>软件使用</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>golang-golandproject目录消失</title>
+    <link href="/2023/09/21/golang/golang-golandproject%E7%9B%AE%E5%BD%95%E6%B6%88%E5%A4%B1/"/>
+    <url>/2023/09/21/golang/golang-golandproject%E7%9B%AE%E5%BD%95%E6%B6%88%E5%A4%B1/</url>
+    
+    <content type="html"><![CDATA[<p>如果遇到Project目录消失，只能显示Project files问题，删除项目目录下的.idea文件，重新打开文件即可</p><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>golang</category>
+      
+      <category>goland</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>golang</tag>
+      
+      <tag>软件使用</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>golang-switchcase语句</title>
+    <link href="/2023/09/21/golang/golang-switchcase%E8%AF%AD%E5%8F%A5/"/>
+    <url>/2023/09/21/golang/golang-switchcase%E8%AF%AD%E5%8F%A5/</url>
+    
+    <content type="html"><![CDATA[<h1 id="基本写法"><a href="#基本写法" class="headerlink" title="基本写法"></a>基本写法</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"> <span class="hljs-keyword">var</span> test = <span class="hljs-string">&quot;hello&quot;</span><br><span class="hljs-keyword">switch</span> test &#123;<br><span class="hljs-keyword">case</span> <span class="hljs-string">&quot;hello&quot;</span>:<br>fmt.Println(<span class="hljs-string">&quot;hello&quot;</span>)<br><span class="hljs-keyword">case</span> <span class="hljs-string">&quot;world&quot;</span>:<br>fmt.Println(<span class="hljs-string">&quot;world&quot;</span>)<br><span class="hljs-keyword">default</span>:<br>fmt.Println(<span class="hljs-string">&quot;default&quot;</span>)<br>&#125;<br> <span class="hljs-comment">// print: hello</span><br></code></pre></td></tr></table></figure><h1 id="一个分支多个值"><a href="#一个分支多个值" class="headerlink" title="一个分支多个值"></a>一个分支多个值</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> test = <span class="hljs-string">&quot;hi&quot;</span><br><span class="hljs-keyword">switch</span> test &#123;<br><span class="hljs-keyword">case</span> <span class="hljs-string">&quot;hello&quot;</span>, <span class="hljs-string">&quot;hi&quot;</span>:<br>fmt.Println(<span class="hljs-string">&quot;hello&quot;</span>)<br><span class="hljs-keyword">case</span> <span class="hljs-string">&quot;world&quot;</span>:<br>fmt.Println(<span class="hljs-string">&quot;world&quot;</span>)<br><span class="hljs-keyword">default</span>:<br>fmt.Println(<span class="hljs-string">&quot;default&quot;</span>)<br>&#125;<br> <span class="hljs-comment">// print: hello</span><br></code></pre></td></tr></table></figure><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>golang</category>
+      
+      <category>switchcase</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>golang</tag>
+      
+      <tag>语法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>golang-map判断key是否存在</title>
+    <link href="/2023/09/21/golang/golang-map%E5%88%A4%E6%96%ADkey%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8/"/>
+    <url>/2023/09/21/golang/golang-map%E5%88%A4%E6%96%ADkey%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8/</url>
+    
+    <content type="html"><![CDATA[<h1 id="判断代码"><a href="#判断代码" class="headerlink" title="判断代码"></a>判断代码</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">if</span> _, ok := <span class="hljs-keyword">map</span>[key]; ok &#123;<br>    <span class="hljs-comment">// 存在</span><br>&#125;<br><br><span class="hljs-keyword">if</span> _, ok := <span class="hljs-keyword">map</span>[key]; !ok &#123;<br>    <span class="hljs-comment">// 不存在</span><br>&#125;<br></code></pre></td></tr></table></figure><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>golang</category>
+      
+      <category>map</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>golang</tag>
+      
+      <tag>语法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>网站收藏-golang</title>
+    <link href="/2023/09/21/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F-golang/"/>
+    <url>/2023/09/21/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F-golang/</url>
+    
+    <content type="html"><![CDATA[<ul><li><a href="https://go.dev/">go 官网</a></li></ul><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>网站收藏</category>
+      
+      <category>golang</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>网站收藏</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>网站收藏-工具网站</title>
+    <link href="/2023/09/21/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F-%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/"/>
+    <url>/2023/09/21/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F-%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/</url>
+    
+    <content type="html"><![CDATA[<div class="note note-success">            <p>文件处理</p>          </div><ul><li><a href="https://tinywow.com/">文件处理</a></li><li><a href="https://cn.office-converter.com/">文件格式转换</a></li></ul><div class="note note-success">            <p>编码</p>          </div><ul><li><a href="https://base64.us/">base64 在线编码解码</a></li><li><a href="http://www.ecjson.com/image_color#9d136d">取色器</a></li></ul><div class="note note-success">            <p>软件</p>          </div><ul><li><a href="https://www.exception.site/">软件破解</a></li></ul><div class="note note-success">            <p>壁纸</p>          </div><ul><li><a href="https://www.bizhi99.com/">高清壁纸</a></li></ul><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>网站收藏</category>
       
       <category>工具网站</category>
       
@@ -22,7 +192,7 @@
     
     <tags>
       
-      <tag>乱七八糟</tag>
+      <tag>网站收藏</tag>
       
     </tags>
     

@@ -18,24 +18,29 @@
   <meta name="author" content="ydkmm">
   <meta name="keywords" content="个人博客,云原生,kubernetes,docker">
   
-    <meta name="description" content="若有疑问，欢迎邮箱联系 2304262737@qq.com">
+    <meta name="description" content="问题创建项目后，开启 mod 模式后，在使用 import 导入相关包后，使用 go mod tidy 生成 go.mod 文件后，go.mod 文件里面的包名变红(未导入)，导致不能使用包里面的方法，go run main.go 报错: package xxx is not in GOROOT，如下图              不过 go.mod 里面的包没有被引入猜测是索引路径出了问题，当前项">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Storage-2-持久卷">
-<meta property="og:url" content="https://ydkmm.fun/2023/09/21/Kubernetes/Storage/Storage-2-%E6%8C%81%E4%B9%85%E5%8D%B7/index.html">
+<meta property="og:title" content="golang-开启mod后import仍然报红">
+<meta property="og:url" content="https://ydkmm.fun/2023/09/21/golang/golang-%E5%BC%80%E5%90%AFmod%E5%90%8Eimport%E4%BB%8D%E7%84%B6%E6%8A%A5%E7%BA%A2/index.html">
 <meta property="og:site_name" content="一大口毛毛">
-<meta property="og:description" content="若有疑问，欢迎邮箱联系 2304262737@qq.com">
+<meta property="og:description" content="问题创建项目后，开启 mod 模式后，在使用 import 导入相关包后，使用 go mod tidy 生成 go.mod 文件后，go.mod 文件里面的包名变红(未导入)，导致不能使用包里面的方法，go run main.go 报错: package xxx is not in GOROOT，如下图              不过 go.mod 里面的包没有被引入猜测是索引路径出了问题，当前项">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-21T02:03:22.000Z">
-<meta property="article:modified_time" content="2023-09-21T02:03:22.198Z">
+<meta property="og:image" content="https://ydkmm.fun/2023/09/21/golang/golang-%E5%BC%80%E5%90%AFmod%E5%90%8Eimport%E4%BB%8D%E7%84%B6%E6%8A%A5%E7%BA%A2/%E6%8A%A5%E9%94%99.png">
+<meta property="og:image" content="https://ydkmm.fun/2023/09/21/golang/golang-%E5%BC%80%E5%90%AFmod%E5%90%8Eimport%E4%BB%8D%E7%84%B6%E6%8A%A5%E7%BA%A2/sdk.png">
+<meta property="og:image" content="https://ydkmm.fun/2023/09/21/golang/golang-%E5%BC%80%E5%90%AFmod%E5%90%8Eimport%E4%BB%8D%E7%84%B6%E6%8A%A5%E7%BA%A2/%E8%AE%BE%E7%BD%AEgomod.png">
+<meta property="article:published_time" content="2023-09-21T11:30:48.000Z">
+<meta property="article:modified_time" content="2023-09-21T11:42:07.078Z">
 <meta property="article:author" content="ydkmm">
-<meta property="article:tag" content="Kubernetes">
+<meta property="article:tag" content="golang">
+<meta property="article:tag" content="软件使用">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ydkmm.fun/2023/09/21/golang/golang-%E5%BC%80%E5%90%AFmod%E5%90%8Eimport%E4%BB%8D%E7%84%B6%E6%8A%A5%E7%BA%A2/%E6%8A%A5%E9%94%99.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Storage-2-持久卷 - 一大口毛毛</title>
+  <title>golang-开启mod后import仍然报红 - 一大口毛毛</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -245,7 +250,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Storage-2-持久卷"></span>
+            <span id="subtitle" data-typed-text="golang-开启mod后import仍然报红"></span>
           
         </div>
 
@@ -261,8 +266,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-21 10:03" pubdate>
-          2023年9月21日 上午
+        <time datetime="2023-09-21 19:30" pubdate>
+          2023年9月21日 晚上
         </time>
       </span>
     
@@ -273,7 +278,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          28 字
+          223 字
         
       </span>
     
@@ -284,7 +289,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -321,12 +326,18 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Storage-2-持久卷</h1>
+            <h1 id="seo-header">golang-开启mod后import仍然报红</h1>
             
             
               <div class="markdown-body">
                 
-                <div class="note note-info">
+                <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>创建项目后，开启 mod 模式后，在使用 import 导入相关包后，使用 go mod tidy 生成 go.mod 文件后，go.mod 文件里面的包名变红(未导入)，导致不能使用包里面的方法，go run main.go 报错: package xxx is not in GOROOT，如下图<br><img src="/2023/09/21/golang/golang-%E5%BC%80%E5%90%AFmod%E5%90%8Eimport%E4%BB%8D%E7%84%B6%E6%8A%A5%E7%BA%A2/%E6%8A%A5%E9%94%99.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<div class="note note-warning">
+            <p>不过 go.mod 里面的包没有被引入<br>猜测是索引路径出了问题，当前项目的依赖路径如下，可以看到只有 sdk 没有 go mod 模块</p>
+          </div>
+<p><img src="/2023/09/21/golang/golang-%E5%BC%80%E5%90%AFmod%E5%90%8Eimport%E4%BB%8D%E7%84%B6%E6%8A%A5%E7%BA%A2/sdk.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p><img src="/2023/09/21/golang/golang-%E5%BC%80%E5%90%AFmod%E5%90%8Eimport%E4%BB%8D%E7%84%B6%E6%8A%A5%E7%BA%A2/%E8%AE%BE%E7%BD%AEgomod.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<div class="note note-info">
             <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>
           </div>
                 
@@ -367,12 +378,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Kubernetes/" class="category-chain-item">Kubernetes</a>
+  <a href="/categories/golang/" class="category-chain-item">golang</a>
   
   
     <span>></span>
     
-  <a href="/categories/Kubernetes/Storage/" class="category-chain-item">Storage</a>
+  <a href="/categories/golang/goland/" class="category-chain-item">goland</a>
   
   
 
@@ -389,7 +400,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Kubernetes/" class="print-no-link">#Kubernetes</a>
+        <a href="/tags/golang/" class="print-no-link">#golang</a>
+      
+        <a href="/tags/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/" class="print-no-link">#软件使用</a>
       
     </div>
   
@@ -401,8 +414,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Storage-2-持久卷</div>
-      <div>https://ydkmm.fun/2023/09/21/Kubernetes/Storage/Storage-2-持久卷/</div>
+      <div>golang-开启mod后import仍然报红</div>
+      <div>https://ydkmm.fun/2023/09/21/golang/golang-开启mod后import仍然报红/</div>
     </div>
     <div class="license-meta">
       
@@ -446,9 +459,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/21/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F-%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/" title="网站收藏-工具网站">
+                      <a href="/2023/09/21/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F-github%E9%A1%B9%E7%9B%AE/" title="网站收藏-github项目">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">网站收藏-工具网站</span>
+                        <span class="hidden-mobile">网站收藏-github项目</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -456,8 +469,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/18/Kubernetes/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F-1-%E5%8D%B7%E5%90%8D%E7%A7%B0%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/" title="乱七八糟-1-卷名称命名规范">
-                        <span class="hidden-mobile">乱七八糟-1-卷名称命名规范</span>
+                      <a href="/2023/09/21/golang/golang-golandproject%E7%9B%AE%E5%BD%95%E6%B6%88%E5%A4%B1/" title="golang-golandproject目录消失">
+                        <span class="hidden-mobile">golang-golandproject目录消失</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

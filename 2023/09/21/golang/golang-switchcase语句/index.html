@@ -18,24 +18,25 @@
   <meta name="author" content="ydkmm">
   <meta name="keywords" content="个人博客,云原生,kubernetes,docker">
   
-    <meta name="description" content="若有疑问，欢迎邮箱联系 2304262737@qq.com">
+    <meta name="description" content="基本写法12345678910 var test &#x3D; &quot;hello&quot;switch test &amp;#123;case &quot;hello&quot;:	fmt.Println(&quot;hello&quot;)case &quot;world&quot;:	fmt.Println(&quot;world&quot;)default:	fmt.Println(&quot;def">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Storage-2-持久卷">
-<meta property="og:url" content="https://ydkmm.fun/2023/09/21/Kubernetes/Storage/Storage-2-%E6%8C%81%E4%B9%85%E5%8D%B7/index.html">
+<meta property="og:title" content="golang-switchcase语句">
+<meta property="og:url" content="https://ydkmm.fun/2023/09/21/golang/golang-switchcase%E8%AF%AD%E5%8F%A5/index.html">
 <meta property="og:site_name" content="一大口毛毛">
-<meta property="og:description" content="若有疑问，欢迎邮箱联系 2304262737@qq.com">
+<meta property="og:description" content="基本写法12345678910 var test &#x3D; &quot;hello&quot;switch test &amp;#123;case &quot;hello&quot;:	fmt.Println(&quot;hello&quot;)case &quot;world&quot;:	fmt.Println(&quot;world&quot;)default:	fmt.Println(&quot;def">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-21T02:03:22.000Z">
-<meta property="article:modified_time" content="2023-09-21T02:03:22.198Z">
+<meta property="article:published_time" content="2023-09-21T11:19:33.000Z">
+<meta property="article:modified_time" content="2023-09-21T11:23:58.978Z">
 <meta property="article:author" content="ydkmm">
-<meta property="article:tag" content="Kubernetes">
+<meta property="article:tag" content="golang">
+<meta property="article:tag" content="语法">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Storage-2-持久卷 - 一大口毛毛</title>
+  <title>golang-switchcase语句 - 一大口毛毛</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -245,7 +246,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Storage-2-持久卷"></span>
+            <span id="subtitle" data-typed-text="golang-switchcase语句"></span>
           
         </div>
 
@@ -261,8 +262,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-21 10:03" pubdate>
-          2023年9月21日 上午
+        <time datetime="2023-09-21 19:19" pubdate>
+          2023年9月21日 晚上
         </time>
       </span>
     
@@ -273,7 +274,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          28 字
+          481 字
         
       </span>
     
@@ -284,7 +285,7 @@
         
         
         
-          1 分钟
+          5 分钟
         
       </span>
     
@@ -321,12 +322,17 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Storage-2-持久卷</h1>
+            <h1 id="seo-header">golang-switchcase语句</h1>
             
             
               <div class="markdown-body">
                 
-                <div class="note note-info">
+                <h1 id="基本写法"><a href="#基本写法" class="headerlink" title="基本写法"></a>基本写法</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"> <span class="hljs-keyword">var</span> test = <span class="hljs-string">&quot;hello&quot;</span><br><span class="hljs-keyword">switch</span> test &#123;<br><span class="hljs-keyword">case</span> <span class="hljs-string">&quot;hello&quot;</span>:<br>	fmt.Println(<span class="hljs-string">&quot;hello&quot;</span>)<br><span class="hljs-keyword">case</span> <span class="hljs-string">&quot;world&quot;</span>:<br>	fmt.Println(<span class="hljs-string">&quot;world&quot;</span>)<br><span class="hljs-keyword">default</span>:<br>	fmt.Println(<span class="hljs-string">&quot;default&quot;</span>)<br>&#125;<br> <span class="hljs-comment">// print: hello</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="一个分支多个值"><a href="#一个分支多个值" class="headerlink" title="一个分支多个值"></a>一个分支多个值</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> test = <span class="hljs-string">&quot;hi&quot;</span><br><span class="hljs-keyword">switch</span> test &#123;<br><span class="hljs-keyword">case</span> <span class="hljs-string">&quot;hello&quot;</span>, <span class="hljs-string">&quot;hi&quot;</span>:<br>	fmt.Println(<span class="hljs-string">&quot;hello&quot;</span>)<br><span class="hljs-keyword">case</span> <span class="hljs-string">&quot;world&quot;</span>:<br>	fmt.Println(<span class="hljs-string">&quot;world&quot;</span>)<br><span class="hljs-keyword">default</span>:<br>	fmt.Println(<span class="hljs-string">&quot;default&quot;</span>)<br>&#125;<br> <span class="hljs-comment">// print: hello</span><br></code></pre></td></tr></table></figure>
+
+
+<div class="note note-info">
             <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>
           </div>
                 
@@ -367,12 +373,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Kubernetes/" class="category-chain-item">Kubernetes</a>
+  <a href="/categories/golang/" class="category-chain-item">golang</a>
   
   
     <span>></span>
     
-  <a href="/categories/Kubernetes/Storage/" class="category-chain-item">Storage</a>
+  <a href="/categories/golang/switchcase/" class="category-chain-item">switchcase</a>
   
   
 
@@ -389,7 +395,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Kubernetes/" class="print-no-link">#Kubernetes</a>
+        <a href="/tags/golang/" class="print-no-link">#golang</a>
+      
+        <a href="/tags/%E8%AF%AD%E6%B3%95/" class="print-no-link">#语法</a>
       
     </div>
   
@@ -401,8 +409,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Storage-2-持久卷</div>
-      <div>https://ydkmm.fun/2023/09/21/Kubernetes/Storage/Storage-2-持久卷/</div>
+      <div>golang-switchcase语句</div>
+      <div>https://ydkmm.fun/2023/09/21/golang/golang-switchcase语句/</div>
     </div>
     <div class="license-meta">
       
@@ -446,9 +454,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/21/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F-%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/" title="网站收藏-工具网站">
+                      <a href="/2023/09/21/golang/golang-golandproject%E7%9B%AE%E5%BD%95%E6%B6%88%E5%A4%B1/" title="golang-golandproject目录消失">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">网站收藏-工具网站</span>
+                        <span class="hidden-mobile">golang-golandproject目录消失</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -456,8 +464,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/18/Kubernetes/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F-1-%E5%8D%B7%E5%90%8D%E7%A7%B0%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/" title="乱七八糟-1-卷名称命名规范">
-                        <span class="hidden-mobile">乱七八糟-1-卷名称命名规范</span>
+                      <a href="/2023/09/21/golang/golang-map%E5%88%A4%E6%96%ADkey%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8/" title="golang-map判断key是否存在">
+                        <span class="hidden-mobile">golang-map判断key是否存在</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
