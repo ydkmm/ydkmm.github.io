@@ -4,6 +4,112 @@
   
   
   <entry>
+    <title>软件安装-kubernetes</title>
+    <link href="/2023/09/25/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-kubernetes/"/>
+    <url>/2023/09/25/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-kubernetes/</url>
+    
+    <content type="html"><![CDATA[<ul><li><p>安装 kind</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">For AMD64 / x86_64</span><br>[ $(uname -m) = x86_64 ] &amp;&amp; curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64<br><span class="hljs-meta prompt_"># </span><span class="language-bash">For ARM64</span><br>[ $(uname -m) = aarch64 ] &amp;&amp; curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-arm64<br><br>chmod +x ./kind<br>sudo mv ./kind /usr/local/bin/kind<br></code></pre></td></tr></table></figure></li><li><p>验证 kind 安装</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">kind --version<br></code></pre></td></tr></table></figure><p><img src="/2023/09/25/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-kubernetes/%E9%AA%8C%E8%AF%81kind.png" alt="Alt text"></p></li><li><p>使用 kind 创建 cluster</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">kind create cluster<br></code></pre></td></tr></table></figure><p><img src="/2023/09/25/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-kubernetes/%E5%88%9B%E5%BB%BAcluster.png" alt="Alt text"></p></li><li><p>使用指定 yaml 文件创建 cluster<br>以上命令创建的 cluster 只有一个 node，不便于学习，因此创建一个 kind 集群配置文件 <code>cluster-config.yaml</code>，指定要创建的节点数量和其他配置选项，具体操作如下<br>1、先执行 <code>kind delete cluster</code> 删除之前的 cluster<br>2、创建配置文件 <code>cluster-config.yaml</code></p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">kind:</span> <span class="hljs-string">Cluster</span><br><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">kind.x-k8s.io/v1alpha4</span><br><span class="hljs-attr">nodes:</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">role:</span> <span class="hljs-string">control-plane</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">role:</span> <span class="hljs-string">control-plane</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">role:</span> <span class="hljs-string">control-plane</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">role:</span> <span class="hljs-string">worker</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">role:</span> <span class="hljs-string">worker</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">role:</span> <span class="hljs-string">worker</span><br></code></pre></td></tr></table></figure><p>3、使用配置文件创建 cluster</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">kind create cluster --name my-cluster --config cluster-config.yaml<br></code></pre></td></tr></table></figure><p>4、查看节点信息</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">kubectl get nodes<br></code></pre></td></tr></table></figure><p><img src="/2023/09/25/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-kubernetes/%E6%9F%A5%E7%9C%8B%E8%8A%82%E7%82%B9%E4%BF%A1%E6%81%AF.png" alt="Alt text"></p></li></ul><blockquote><p>参考官网：<a href="https://kind.sigs.k8s.io/docs/user/quick-start/">https://kind.sigs.k8s.io/docs/user/quick-start/</a></p></blockquote><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>软件安装</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>软件安装</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>软件安装-kubectl</title>
+    <link href="/2023/09/25/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-kubectl/"/>
+    <url>/2023/09/25/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-kubectl/</url>
+    
+    <content type="html"><![CDATA[<ul><li><p>下载最新发行版</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">curl -LO &quot;https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl&quot;<br></code></pre></td></tr></table></figure></li><li><p>下载 kubectl 校验和文件</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">curl -LO &quot;https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256&quot;<br></code></pre></td></tr></table></figure></li><li><p>验证 kubectl 的可执行文件</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">echo &quot;$(cat kubectl.sha256)  kubectl&quot; | sha256sum --check<br></code></pre></td></tr></table></figure><p>若验证通过，则输出 <code>kubectl: OK</code><br>验证失败是，<code>sha256</code> 将以非零值退出，并打印如下输出</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">kubectl: FAILED<br>sha256sum: WARNING: 1 computed checksum did NOT match<br></code></pre></td></tr></table></figure></li><li><p>安装 kubectl</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl<br></code></pre></td></tr></table></figure></li><li><p>验证安装完成</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">kubectl version --client<br></code></pre></td></tr></table></figure><p><img src="/2023/09/25/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-kubectl/%E9%AA%8C%E8%AF%81%E5%AE%89%E8%A3%85.png" alt="Alt text"></p></li></ul><blockquote><p>参考官网：<a href="https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-linux/">https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-linux/</a></p></blockquote><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>软件安装</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>软件安装</tag>
+      
+      <tag>kubectl</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>软件安装-docker</title>
+    <link href="/2023/09/25/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-docker/"/>
+    <url>/2023/09/25/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-docker/</url>
+    
+    <content type="html"><![CDATA[<ul><li><p>先卸载可能存在的旧版本</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt-get remove docker docker-engine docker-ce docker.io<br></code></pre></td></tr></table></figure></li><li><p>更新 apt 包索引</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt-get update<br></code></pre></td></tr></table></figure></li><li><p>添加 docker 官方 gpg key</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt-get install ca-certificates curl gnupg<br>sudo install -m 0755 -d /etc/apt/keyrings<br>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg<br>sudo chmod a+r /etc/apt/keyrings/docker.gpg<br></code></pre></td></tr></table></figure></li><li><p>添加 apt 包仓库</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">echo \<br>  &quot;deb [arch=&quot;$(dpkg --print-architecture)&quot; signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \<br>  &quot;$(. /etc/os-release &amp;&amp; echo &quot;$VERSION_CODENAME&quot;)&quot; stable&quot; | \<br>  sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null<br>sudo apt-get update<br></code></pre></td></tr></table></figure></li><li><p>安装 docker</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin<br></code></pre></td></tr></table></figure></li><li><p>验证安装成功</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo docker run hello-world<br></code></pre></td></tr></table></figure></li></ul><blockquote><p>参考官网：<a href="https://docs.docker.com/engine/install/ubuntu/#uninstall-old-versions">https://docs.docker.com/engine/install/ubuntu/#uninstall-old-versions</a></p></blockquote><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>软件安装</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>软件安装</tag>
+      
+      <tag>docker</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>软件安装-go</title>
+    <link href="/2023/09/25/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-go/"/>
+    <url>/2023/09/25/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-go/</url>
+    
+    <content type="html"><![CDATA[<ul><li><p>点击进入<a href="https://go.dev/">go 官网</a></p></li><li><p>选择想要的<a href="https://go.dev/dl/">go 版本</a>进行下载</p></li><li><p>安装 go （如果之前存在 go，则删除）</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">rm -rf /usr/local/go &amp;&amp; tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz<br></code></pre></td></tr></table></figure></li><li><p>添加环境变量</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">export PATH=$PATH:/usr/local/go/bin<br><span class="hljs-meta prompt_"># </span><span class="language-bash"><span class="hljs-variable">$HOME</span> 目录就是 家 目录，直接执行 `<span class="hljs-built_in">cd</span>` 再执行 `<span class="hljs-built_in">pwd</span>`，输出的就是 家 目录，</span><br>source $HOME/.profile<br></code></pre></td></tr></table></figure></li><li><p>验证安装成功<br>执行如下命令，若出现 go 相关信息则安装成功</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">go version<br></code></pre></td></tr></table></figure></li></ul><blockquote><p>参考官网：<a href="https://go.dev/doc/install">https://go.dev/doc/install</a></p></blockquote><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>软件安装</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>软件安装</tag>
+      
+      <tag>go</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>网站收藏-github项目</title>
     <link href="/2023/09/21/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F-github%E9%A1%B9%E7%9B%AE/"/>
     <url>/2023/09/21/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F-github%E9%A1%B9%E7%9B%AE/</url>
@@ -286,7 +392,7 @@
     <link href="/2023/09/14/Kubernetes/Operator/Operator-3-operator%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B%EF%BC%88kubebuilder%E5%AE%9E%E7%8E%B0%EF%BC%89/"/>
     <url>/2023/09/14/Kubernetes/Operator/Operator-3-operator%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B%EF%BC%88kubebuilder%E5%AE%9E%E7%8E%B0%EF%BC%89/</url>
     
-    <content type="html"><![CDATA[<h1 id="kubebuilder-介绍"><a href="#kubebuilder-介绍" class="headerlink" title="kubebuilder 介绍"></a>kubebuilder 介绍</h1><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
+    <content type="html"><![CDATA[<h1 id="kubebuilder-介绍"><a href="#kubebuilder-介绍" class="headerlink" title="kubebuilder 介绍"></a>kubebuilder 介绍</h1><p>Kubebuilder 是一个用 Go 语言构建 Kubernetes API 控制器和 CRD 的脚手架工具，通过使用 Kubebuilder，用户可以遵循一套简单的编程框架，编写 Operator 应用实例。</p><h3 id="依赖条件"><a href="#依赖条件" class="headerlink" title="依赖条件"></a>依赖条件</h3><ul><li>go(<a href="">安装参考</a>)</li><li>docker(<a href="">安装参考</a>)</li><li>kubectl(<a href="">安装参考</a>)</li><li>access to a kubernetes cluster(<a href="">安装参考</a>)</li></ul><div class="note note-info">            <p>若有疑问，欢迎邮箱联系 <code>2304262737@qq.com</code></p>          </div>]]></content>
     
     
     <categories>
